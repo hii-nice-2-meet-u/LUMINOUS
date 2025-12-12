@@ -3,9 +3,9 @@
 /*
  *
  *	File		:	luminous.h
- *	Release		:	v1.0.0
+ *	Release		:	v2.0.0
  *
- *	Created on	:	Wed 19 Nov 2025
+ *	Created on	:	Fri 12 Nov 2025
  *		Author	:	hii-nice-2-meet-u
  *
  */
@@ -29,7 +29,12 @@ public:
 	uint16_t read(uint8_t Channel);
 
 private:
-	uint8_t _sclk, _miso, _mosi, _ss0, _ss1;
+	uint16_t          read_MANUAL(uint8_t Channel);
+	uint16_t          read_SPI(uint8_t Channel);
+	volatile bool     isMode_SPI = false;
+	volatile uint8_t  _sclk, _miso, _mosi, _ss0, _ss1;
+	volatile uint8_t  X_SCLK, X_MISO, X_MOSI, X_SS0, X_SS1;
+	volatile uint8_t *PORTX_SCLK, *PINX_MISO, *PORTX_MOSI, *PORTX_SS0, *PORTX_SS1;
 };
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
